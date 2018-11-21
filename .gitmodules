@@ -1,0 +1,3 @@
+[submodule "oma/deps/flutter_cached_network_image"]
+	path = oma/deps/flutter_cached_network_image
+	url = git@github.com:AustrianApps/flutter_cached_network_image.git
