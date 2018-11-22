@@ -30,8 +30,8 @@ void addNtlmInterceptor(Dio dio, Credentials credentials) {
     return response;
   };
   dio.interceptor.response.onError = (DioError e) async {
-    log.finer('Intercepted onError. ${e.response.statusCode} for request ${e.response.request.path}');
-    if (e.response.statusCode != HttpStatus.unauthorized) {
+    log.finer('Intercepted onError. ${e.response?.statusCode} for request ${e.response?.request?.path}');
+    if (e.response?.statusCode != HttpStatus.unauthorized) {
       return e;
     }
     final authHeader = e.response.headers[HttpHeaders.wwwAuthenticateHeader];
