@@ -56,7 +56,11 @@ void addNtlmInterceptor(Dio dio, Credentials credentials) {
             headers: {HttpHeaders.authorizationHeader: msg1}
               ..addAll(e.response.request.headers)));
     String res2Authenticate =
-        res1.headers[HttpHeaders.wwwAuthenticateHeader].first;
+        res1.headers[HttpHeaders.wwwAuthenticateHeader]?.first;
+    if (res2Authenticate == null) {
+      log.warning('No Authenticate header found for response from ${e.response.request.path}.', e, e.stackTrace);
+      return e;
+    }
     if (!res2Authenticate.startsWith("NTLM ")) {
       return e;
     }
